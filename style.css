@@ -1,0 +1,204 @@
+/* ===== RESET E BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variáveis de cor — assim fica fácil mudar depois */
+:root {
+  --fundo: #12121a;           /* fundo escuro principal */
+  --fundo-card: #1e1e2a;      /* fundo dos cards */
+  --fundo-tabela: #1a1a26;    /* fundo da tabela */
+  --roxo: #8b5cf6;            /* cor principal */
+  --roxo-escuro: #6d28d9;     /* variação do roxo */
+  --dourado: #facc15;         /* cor secundária */
+  --texto: #e5e5f0;           /* texto claro */
+  --texto-suave: #a1a1b5;     /* texto secundário */
+  --borda: #2e2e40;           /* linhas e bordas */
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5;
+  padding: 16px;
+}
+
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+  text-align: center;
+  padding: 24px 12px;
+  border-bottom: 2px solid var(--roxo);
+  margin-bottom: 24px;
+}
+
+.cabecalho h1 {
+  font-size: 2rem;
+  color: var(--roxo);
+  letter-spacing: 1px;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: var(--dourado);
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.estudante {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  margin-top: 4px;
+}
+
+/* ===== CARDS DE RESUMO ===== */
+.cards-resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.card {
+  position: relative;
+  background-color: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 18px 16px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--roxo);
+}
+
+.card-icone {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.3rem;
+}
+
+.card h2 {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--dourado);
+}
+
+/* ===== TABELA ===== */
+.tabela-area h2 {
+  font-size: 1.3rem;
+  color: var(--roxo);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Permite rolar a tabela no celular sem quebrar o layout */
+.tabela-responsiva {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--borda);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px; /* força rolagem em telas pequenas */
+  background-color: var(--fundo-tabela);
+}
+
+thead {
+  background-color: var(--roxo-escuro);
+}
+
+thead th {
+  padding: 12px 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  text-align: center;
+}
+
+tbody td {
+  padding: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  border-top: 1px solid var(--borda);
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Primeira coluna alinhada à esquerda (nome da disciplina) */
+tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+/* ===== SITUAÇÕES ===== */
+.situacao {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.situacao-bom {
+  background-color: rgba(139, 92, 246, 0.2);
+  color: var(--roxo);
+  border: 1px solid var(--roxo);
+}
+
+.situacao-atencao {
+  background-color: rgba(250, 204, 21, 0.15);
+  color: var(--dourado);
+  border: 1px solid var(--dourado);
+}
+
+.situacao-indisponivel {
+  background-color: rgba(161, 161, 181, 0.15);
+  color: var(--texto-suave);
+  border: 1px solid var(--texto-suave);
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+  text-align: center;
+  padding: 24px 12px;
+  margin-top: 32px;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--borda);
+}
+
+/* ===== AJUSTES PARA CELULAR ===== */
+@media (max-width: 600px) {
+  .cabecalho h1 {
+    font-size: 1.6rem;
+  }
+
+  .cards-resumo {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .card p {
+    font-size: 1.3rem;
+  }
+}
