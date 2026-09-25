@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Garante que o site funcione bem em celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boletim Digital</title>
+  <!-- Liga o arquivo de estilos -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="cabecalho">
+    <h1>Boletim Digital</h1>
+    <p class="subtitulo">8º Ano</p>
+    <p class="estudante">Estudante Exemplo</p>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- CARDS DE RESUMO -->
+    <section class="cards-resumo">
+      <div class="card">
+        <span class="card-icone">📊</span>
+        <h2>Média geral</h2>
+        <p id="card-media-geral">—</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icone">📝</span>
+        <h2>Total de faltas</h2>
+        <p id="card-total-faltas">—</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icone">✅</span>
+        <h2>Bom desempenho</h2>
+        <p id="card-bom-desempenho">—</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icone">⚠️</span>
+        <h2>Precisam de atenção</h2>
+        <p id="card-atencao">—</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icone">📅</span>
+        <h2>Frequência</h2>
+        <p id="card-frequencia">—</p>
+      </div>
+    </section>
+
+    <!-- TABELA DE DISCIPLINAS -->
+    <section class="tabela-area">
+      <h2>Notas por disciplina</h2>
+
+      <div class="tabela-responsiva">
+        <table>
+          <thead>
+            <tr>
+              <th>Disciplina</th>
+              <th>1º Tri</th>
+              <th>2º Tri</th>
+              <th>3º Tri</th>
+              <th>Média</th>
+              <th>Faltas</th>
+              <th>Situação</th>
+            </tr>
+          </thead>
+          <!-- O JavaScript vai preencher as linhas aqui -->
+          <tbody id="corpo-tabela"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <p>Projeto Boletim Digital — dados fictícios para estudo.</p>
+  </footer>
+
+  <!-- Liga o arquivo JavaScript no final, para a página carregar primeiro -->
+  <script src="script.js"></script>
+</body>
+</html>
