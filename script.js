@@ -14,14 +14,21 @@ const CONFIG_ALUNO = {
    Cada nota pode vir em formatos antigos: 75, 82, 100, "8,5", 8.5, null.
    A normalização abaixo converte tudo para o padrão 0 a 10. */
 const DISCIPLINAS_PADRAO = [
-  { nome: "Português",    notas: [75, 82, 90],  faltas: [2, 0, 1] },
-  { nome: "Matemática",   notas: [68, 74, 80],  faltas: [4, 2, 3] },
-  { nome: "Ciências",     notas: [85, 90, 88],  faltas: [0, 1, 0] },
-  { nome: "História",     notas: [70, 65, 72],  faltas: [6, 4, 5] },
-  { nome: "Geografia",    notas: [88, 92, 95],  faltas: [1, 0, 2] },
-  { nome: "Inglês",       notas: [60, 70, 65],  faltas: [8, 6, 7] },
-  { nome: "Artes",        notas: [95, 98, 100], faltas: [0, 0, 0] },
-  { nome: "Educação Física", notas: [90, 88, 92], faltas: [1, 2, 1] }
+  { disciplina: "Língua Portuguesa", tri1: 82, tri2: "7,8", tri3: 85, faltas: [2, 1, 1] },
+  { disciplina: "Matemática", tri1: 52, tri2: "5,8", tri3: null, faltas: [3, 2, 1] },
+  { disciplina: "Ciências", tri1: "8,1", tri2: 76, tri3: 8.0, faltas: [1, 2, 0] },
+  { disciplina: "História", tri1: 7.0, tri2: 84, tri3: null, faltas: [1, 1, 1] },
+  { disciplina: "Geografia", tri1: 68, tri2: 7.3, tri3: "7,9", faltas: [0, 1, 1] },
+  { disciplina: "Língua Inglesa", tri1: 86, tri2: "8,1", tri3: 8.7, faltas: [1, 0, 0] },
+  { disciplina: "Arte", tri1: 9.0, tri2: 92, tri3: null, faltas: [1, 1, 0] },
+  { disciplina: "Educação Física", tri1: 95, tri2: 9.0, tri3: "9,4", faltas: [0, 1, 0] },
+  { disciplina: "Educação Digital", tri1: 88, tri2: 9.1, tri3: 93, faltas: [1, 0, 1] },
+  { disciplina: "Educação Financeira", tri1: 74, tri2: "7,8", tri3: null, faltas: [1, 1, 1] },
+  { disciplina: "Estudo Orientado", tri1: 8.0, tri2: 83, tri3: "8,5", faltas: [0, 1, 0] },
+  { disciplina: "Redação e Leitura", tri1: 62, tri2: "6,8", tri3: null, faltas: [2, 1, 1] },
+  { disciplina: "Pensamento Lógico", tri1: 48, tri2: 5.6, tri3: "6,0", faltas: [2, 2, 1] },
+  { disciplina: "Literatura Arte e Movimento", tri1: "7,7", tri2: 80, tri3: null, faltas: [1, 0, 1] },
+  { disciplina: "Práticas Experimentais", tri1: 58, tri2: "6,2", tri3: 6.4, faltas: [1, 1, 1] }
 ];
 
 /* Frequência demonstrativa (não é calculada pelas faltas) */
@@ -364,11 +371,17 @@ function converterDadosDaApi(lista) {
   });
 }
 
-/* Cria uma cópia das disciplinas padrão para não modificar o original */
+/* Cria uma cópia das disciplinas padrão para não modificar o original.
+   Converte o formato antigo (disciplina / tri1 / tri2 / tri3 / faltas)
+   para o formato interno (nome / notas[3] / faltas[3]). */
 function clonarDisciplinasPadrao() {
   return DISCIPLINAS_PADRAO.map((d) => ({
-    nome: d.nome,
-    notas: d.notas.map((n) => normalizarNotaAntiga(n)),
+    nome: d.disciplina,
+    notas: [
+      normalizarNotaAntiga(d.tri1),
+      normalizarNotaAntiga(d.tri2),
+      normalizarNotaAntiga(d.tri3)
+    ],
     faltas: d.faltas.slice()
   }));
 }
@@ -386,7 +399,7 @@ function ativarEdicao() {
 
 /* =========================================================
    LER CAMPOS DE EDIÇÃO E VALIDAR
-   Retorna true se tudo válido, false caso contrário.
+   Retorna a nova lista ou null se houver campo inválido.
    ========================================================= */
 function coletarDadosDaEdicao() {
   const camposNota = elCorpoTabela.querySelectorAll('input[data-tipo="nota"]');
