@@ -19,61 +19,90 @@
 
   <main class="conteudo">
 
-    <!-- CARDS DE RESUMO -->
-    <section class="cards-resumo">
-      <div class="card">
-        <span class="card-icone">📊</span>
-        <h2>Média geral</h2>
-        <p id="card-media-geral">—</p>
+    <!-- TELA DE ACESSO POR PIN -->
+    <section class="acesso-pin" id="acesso-pin">
+      <h2>Acesso do estudante</h2>
+      <p class="acesso-info">Turma: <strong>8A</strong> — Chamada: <strong>23</strong></p>
+      <div class="acesso-campo">
+        <label for="campo-pin">Digite seu PIN</label>
+        <input type="password" id="campo-pin" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="PIN" />
       </div>
-
-      <div class="card">
-        <span class="card-icone">📝</span>
-        <h2>Total de faltas</h2>
-        <p id="card-total-faltas">—</p>
-      </div>
-
-      <div class="card">
-        <span class="card-icone">✅</span>
-        <h2>Bom desempenho</h2>
-        <p id="card-bom-desempenho">—</p>
-      </div>
-
-      <div class="card">
-        <span class="card-icone">⚠️</span>
-        <h2>Precisam de atenção</h2>
-        <p id="card-atencao">—</p>
-      </div>
-
-      <div class="card">
-        <span class="card-icone">📅</span>
-        <h2>Frequência</h2>
-        <p id="card-frequencia">—</p>
-      </div>
+      <button id="botao-entrar" class="botao">Entrar</button>
+      <p id="mensagem-acesso" class="mensagem-acesso"></p>
     </section>
 
-    <!-- TABELA DE DISCIPLINAS -->
-    <section class="tabela-area">
-      <h2>Notas por disciplina</h2>
+    <!-- ÁREA DO BOLETIM (escondida até o login) -->
+    <div id="area-boletim" class="area-boletim escondido">
 
-      <div class="tabela-responsiva">
-        <table>
-          <thead>
-            <tr>
-              <th>Disciplina</th>
-              <th>1º Tri</th>
-              <th>2º Tri</th>
-              <th>3º Tri</th>
-              <th>Média</th>
-              <th>Faltas</th>
-              <th>Situação</th>
-            </tr>
-          </thead>
-          <!-- O JavaScript vai preencher as linhas aqui -->
-          <tbody id="corpo-tabela"></tbody>
-        </table>
+      <!-- CARDS DE RESUMO -->
+      <section class="cards-resumo">
+        <div class="card">
+          <span class="card-icone">📊</span>
+          <h2>Média geral</h2>
+          <p id="card-media-geral">—</p>
+        </div>
+
+        <div class="card">
+          <span class="card-icone">📝</span>
+          <h2>Total de faltas</h2>
+          <p id="card-total-faltas">—</p>
+        </div>
+
+        <div class="card">
+          <span class="card-icone">✅</span>
+          <h2>Bom desempenho</h2>
+          <p id="card-bom-desempenho">—</p>
+        </div>
+
+        <div class="card">
+          <span class="card-icone">⚠️</span>
+          <h2>Precisam de atenção</h2>
+          <p id="card-atencao">—</p>
+        </div>
+
+        <div class="card">
+          <span class="card-icone">📅</span>
+          <h2>Frequência</h2>
+          <p id="card-frequencia">—</p>
+        </div>
+      </section>
+
+      <!-- BOTÃO ALTERAR DADOS -->
+      <div class="acoes-boletim">
+        <button id="botao-alterar" class="botao">Alterar dados</button>
       </div>
-    </section>
+
+      <!-- TABELA DE DISCIPLINAS -->
+      <section class="tabela-area">
+        <h2>Notas por disciplina</h2>
+
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Disciplina</th>
+                <th>1º Tri</th>
+                <th>2º Tri</th>
+                <th>3º Tri</th>
+                <th>Média</th>
+                <th>Faltas</th>
+                <th>Situação</th>
+              </tr>
+            </thead>
+            <!-- O JavaScript vai preencher as linhas aqui -->
+            <tbody id="corpo-tabela"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BOTÃO SALVAR -->
+      <div class="acoes-boletim">
+        <button id="botao-salvar" class="botao botao-salvar escondido">Salvar alterações</button>
+      </div>
+
+      <p id="mensagem-boletim" class="mensagem-boletim"></p>
+
+    </div>
 
   </main>
 
