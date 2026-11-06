@@ -20,7 +20,7 @@ const DISCIPLINAS_PADRAO = [
   { disciplina: "História", tri1: 9.7, tri2: 9.7, tri3: null, faltas: [1, 0, 1] },
   { disciplina: "Geografia", tri1: 10.0, tri2: 8.0, tri3: null, faltas: [0, 0, 1] },
   { disciplina: "Língua Inglesa", tri1: 9.1, tri2: "10,0", tri3: null, faltas: [1, 1, 0] },
-  { disciplina: "Arte", tri1: 7.6, tri2: 10.0, tri3: 0.0, faltas: [1, 2, 0] },
+  { disciplina: "Arte", tri1: 7.6, tri2: 10.0, tri3: null, faltas: [1, 2, 0] },
   { disciplina: "Educação Física", tri1: 9.0, tri2: 9.1, tri3: null, faltas: [0, 0, 0] },
   { disciplina: "Educação Digital", tri1: 10.0, tri2: 10.0, tri3: null, faltas: [0, 4, 0] },
   { disciplina: "Educação Financeira", tri1: 8.8, tri2: "9,0", tri3: null, faltas: [0, 0, 0] },
