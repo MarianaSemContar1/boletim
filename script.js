@@ -14,21 +14,21 @@ const CONFIG_ALUNO = {
    Cada nota pode vir em formatos antigos: 75, 82, 100, "8,5", 8.5, null.
    A normalização abaixo converte tudo para o padrão 0 a 10. */
 const DISCIPLINAS_PADRAO = [
-  { disciplina: "Língua Portuguesa", tri1: 10,0, tri2: "9,3", tri3: null, faltas: [1, 1, 2] },
-  { disciplina: "Matemática", tri1: 9,0, tri2: "9,5", tri3: null faltas: [0, 2, 0] },
-  { disciplina: "Ciências", tri1: "9,3", tri2: 10,0, tri3: null, faltas: [1, 3, 0] },
-  { disciplina: "História", tri1: 9,7, tri2: 9,7, tri3: null, faltas: [1, 0, 1] },
-  { disciplina: "Geografia", tri1: 10,0, tri2: 8,0, tri3: null, faltas: [0, 0, 1] },
-  { disciplina: "Língua Inglesa", tri1: 9,1, tri2: "10,0", tri3: null, faltas: [1, 1, 0] },
-  { disciplina: "Arte", tri1: 7,6, tri2: 10,0, tri3: 0,0, faltas: [1, 2, 0] },
-  { disciplina: "Educação Física", tri1: 9,0, tri2: 9,1, tri3: null, faltas: [0, 0, 0] },
-  { disciplina: "Educação Digital", tri1: 10,0, tri2: 10,0, tri3: null faltas: [0, 4, 0] },
-  { disciplina: "Educação Financeira", tri1: 8,8, tri2: "9,0", tri3: null, faltas: [0, 0, 0] },
-  { disciplina: "Estudo Orientado", tri1: 10,0, tri2: 9,0, tri3: null, faltas: [0, 0, 0] },
-  { disciplina: "Redação e Leitura", tri1: 7,7, tri2: "9,4", tri3: null, faltas: [0, 2, 1] },
-  { disciplina: "Pensamento Lógico", tri1: 10,0, tri2: 10,0, tri3: null, faltas: [0, 0, 0] },
-  { disciplina: "Literatura Arte e Movimento", tri1: "7,5", tri2: 7,6, tri3: null, faltas: [1, 0, 1] },
-  { disciplina: "Práticas Experimentais", tri1: 8,0, tri2: "9,4", tri3: null, faltas: [0, 1, 1] }
+  { disciplina: "Língua Portuguesa", tri1: 10.0, tri2: "9,3", tri3: null, faltas: [1, 1, 2] },
+  { disciplina: "Matemática", tri1: 9.0, tri2: "9,5", tri3: null, faltas: [0, 2, 0] },
+  { disciplina: "Ciências", tri1: "9,3", tri2: 10.0, tri3: null, faltas: [1, 3, 0] },
+  { disciplina: "História", tri1: 9.7, tri2: 9.7, tri3: null, faltas: [1, 0, 1] },
+  { disciplina: "Geografia", tri1: 10.0, tri2: 8.0, tri3: null, faltas: [0, 0, 1] },
+  { disciplina: "Língua Inglesa", tri1: 9.1, tri2: "10,0", tri3: null, faltas: [1, 1, 0] },
+  { disciplina: "Arte", tri1: 7.6, tri2: 10.0, tri3: 0.0, faltas: [1, 2, 0] },
+  { disciplina: "Educação Física", tri1: 9.0, tri2: 9.1, tri3: null, faltas: [0, 0, 0] },
+  { disciplina: "Educação Digital", tri1: 10.0, tri2: 10.0, tri3: null, faltas: [0, 4, 0] },
+  { disciplina: "Educação Financeira", tri1: 8.8, tri2: "9,0", tri3: null, faltas: [0, 0, 0] },
+  { disciplina: "Estudo Orientado", tri1: 10.0, tri2: 9.0, tri3: null, faltas: [0, 0, 0] },
+  { disciplina: "Redação e Leitura", tri1: 7.7, tri2: "9,4", tri3: null, faltas: [0, 2, 1] },
+  { disciplina: "Pensamento Lógico", tri1: 10.0, tri2: 10.0, tri3: null, faltas: [0, 0, 0] },
+  { disciplina: "Literatura Arte e Movimento", tri1: "7,5", tri2: 7.6, tri3: null, faltas: [1, 0, 1] },
+  { disciplina: "Práticas Experimentais", tri1: 8.0, tri2: "9,4", tri3: null, faltas: [0, 1, 1] }
 ];
 
 /* Frequência demonstrativa (não é calculada pelas faltas) */
@@ -672,7 +672,7 @@ function atualizarGraficoEvolucao() {
     type: "line",
     data: {
       labels: ["1º Tri", "2º Tri", "3º Tri"],
-      datasets: [8,2
+      datasets: [
         {
           label: "Média geral",
           data: valores,
