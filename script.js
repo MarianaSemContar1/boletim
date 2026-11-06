@@ -481,6 +481,14 @@ async function salvarDados() {
   elBotaoSalvar.disabled = true;
   mostrarMensagemBoletim("Salvando...", "mensagem-info");
 
+  // Converte notas/faltas ausentes (null) para 0 apenas no que vai para a API.
+  // O estado interno (tabela, cards, gráficos) continua usando null normalmente.
+  const disciplinasParaEnviar = novosDados.map((d) => ({
+    nome: d.nome,
+    notas: d.notas.map((n) => (n === null ? 0 : n)),
+    faltas: d.faltas.map((f) => (f === null ? 0 : f))
+  }));
+
   try {
     const resposta = await fetch(CONFIG_ALUNO.apiUrl + "/api/v1/boletins/salvar", {
       method: "PUT",
@@ -490,14 +498,22 @@ async function salvarDados() {
         numero_chamada: CONFIG_ALUNO.numeroChamada,
         pin: pinSessao,
         dados: {
-          disciplinas: novosDados.map((d) => ({
-            nome: d.nome,
-            notas: d.notas,
-            faltas: d.faltas
-          }))
+          disciplinas: disciplinasParaEnviar
         }
       })
     });
+
+    if (resposta.status === 401) {
+      mostrarMensagemBoletim("Sessão expirada. Entre novamente.", "mensagem-erro");
+      elBotaoSalvar.disabled = false;
+      return;
+    }
+
+    if (resposta.status === 429) {
+      mostrarMensagemBoletim("Muitas tentativas. Aguarde um minuto e tente novamente.", "mensagem-erro");
+      elBotaoSalvar.disabled = false;
+      return;
+    }
 
     if (!resposta.ok) {
       mostrarMensagemBoletim("Não foi possível salvar. Tente novamente.", "mensagem-erro");
